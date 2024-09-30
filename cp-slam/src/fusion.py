@@ -34,6 +34,8 @@ class Fusion():
         self.sub_map_list = []
         self.share_data_list = []
         self.configer_group = {'agent_one':cfg_one, 'agent_two':cfg_two}
+        self.config_len_1 = len(self.dataloader_choice(cfg_one))
+        # print(self.config_len_1)
 
     def dataloader_choice(self, cfg):
         if cfg['name'] == 'replica':
@@ -101,7 +103,7 @@ class Fusion():
         _,_,idx, feature_stick, pc_stick, new_occupy_list,_, source_table_stick = select_points(pc_stick, self.cfg['vox_res'], share_data_one.occupy_list, feature_stick, None, device,  share_data_two.source_table)
         pc_stick = pc_stick[idx,:]
         feature_stick = feature_stick[idx,:]
-        source_table_stick = source_table_stick[idx,:]
+        source_table_stick = source_table_stick[idx.to(source_table_stick.device),:]
 
         total_map_fusion = torch.cat([share_data_one.total_map.to(device), pc_stick], dim=0)
         feature_map_fusion = torch.cat([share_data_one.feature_map.to(device), feature_stick], dim=0)
@@ -197,7 +199,7 @@ class Fusion():
                         
                         points_3d_world = points_3d_world[idx,:]
                         sub_feature = sub_feature[idx,:]
-                        sub_source_table = sub_source_table[idx,:]
+                        sub_source_table = sub_source_table[idx.to(sub_source_table.device),:]
                      
                         recon_total_map = torch.cat([recon_total_map, points_3d_world], 0) 
                         recon_feature_map = torch.cat([recon_feature_map, sub_feature], 0)
@@ -221,7 +223,7 @@ class Fusion():
                         
                         points_3d_world = points_3d_world[idx,:]
                         sub_feature = sub_feature[idx,:]
-                        sub_source_table = sub_source_table[idx,:]
+                        sub_source_table = sub_source_table[idx.to(sub_source_table.device),:]
 
                         recon_total_map = torch.cat([recon_total_map, points_3d_world], 0) 
                         recon_feature_map = torch.cat([recon_feature_map, sub_feature], 0)
@@ -386,8 +388,8 @@ class Fusion():
         self.pose_graph.optimization()
         total_est_poses = self.pose_graph.update_pose()
        
-        one_poses_list = total_est_poses[:2500]
-        two_poses_list = total_est_poses[2500:]
+        one_poses_list = total_est_poses[:self.config_len_1]
+        two_poses_list = total_est_poses[self.config_len_1:]
         
         one_poses_numpy = np.stack(one_poses_list, axis=0)
         one_poses_tensor = torch.from_numpy(one_poses_numpy)
@@ -401,7 +403,7 @@ class Fusion():
         _, _, idx, feature_stick, pc_stick, global_occupy_list, _, source_table_stick = select_points(share_data_two.total_map.to(self.device), 100, share_data_one.occupy_list, share_data_two.feature_map.to(self.device), None, self.device, share_data_two.source_table)
         pc_stick = pc_stick[idx,:]
         feature_stick = feature_stick[idx,:]
-        source_table_stick = source_table_stick[idx,:]
+        source_table_stick = source_table_stick[idx.to(source_table_stick.device),:]
 
         global_total_map = torch.cat([share_data_one.total_map.to(self.device), pc_stick], dim=0) 
         global_feature_map = torch.cat([share_data_one.feature_map.to(self.device), feature_stick], dim=0) 
@@ -428,5 +430,8 @@ class Fusion():
         #Refine neural point cloud based on the keyframe-centric model
         recon_total_map, recon_feature_map, recon_source_table = self.re_scatter(map_frame_one, source_table_one, feature_map_one, one_poses_list, map_frame_two, source_table_two, feature_map_two, two_poses_list)
         torch.save(recon_total_map, self.cfg['output_pgo_traj'] + 'pgo_map.pt')
+        torch.save(recon_feature_map, self.cfg['output_pgo_traj'] + 'pgo_feature_map.pt')
+        torch.save(recon_source_table, self.cfg['output_pgo_traj'] + 'pgo_source_table.pt')
+        torch.save(self.optimizer, self.cfg['output_pgo_traj'] + 'optimizer.pt')
 
         print('Complete Exploration!!!')

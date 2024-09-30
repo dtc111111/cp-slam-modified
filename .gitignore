@@ -1,0 +1,7 @@
+*.pyc
+cp-slam/checkpoint
+cp-slam/runs
+cp-slam/output*
+*.pt
+*.png
+*.ply

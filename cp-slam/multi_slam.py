@@ -69,11 +69,11 @@ if __name__ == '__main__':
         configer = yaml.safe_load(f)
         print('\033[1;32m Load configer successfully \033[0m')
 
-    with open('configs/multi_config/multi_0_0.yaml', 'r') as f:
+    with open('configs/multi_config/room0_0.yaml', 'r') as f:
         configer_0 = yaml.safe_load(f)
         print('\033[1;32m Load configer successfully \033[0m')
 
-    with open('configs/multi_config/multi_0_1.yaml', 'r') as f:
+    with open('configs/multi_config/room0_1.yaml', 'r') as f:
         configer_1 = yaml.safe_load(f)
         print('\033[1;32m Load configer successfully \033[0m')
  
@@ -85,4 +85,3 @@ if __name__ == '__main__':
     torch.multiprocessing.set_start_method('spawn')
     explorer_single = Explorer_single(configer, configer_0, configer_1, conf)
     explorer_single.run()
-

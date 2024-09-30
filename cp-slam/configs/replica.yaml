@@ -1,8 +1,8 @@
 name: 'replica'
 
-output_pgo_traj: '...'
-output_pgo_map: '...'
-pose_path: '...'
+output_pgo_traj: './output/'
+output_pgo_map: './output/'
+pose_path: 'dummy.txt'
 
 jitter: 0.3
 rays_count: 1200 

@@ -259,7 +259,7 @@ class Optimizer():
         render_img = []
         for j  in range(sample_points.shape[0]):
             query_result, _ = query_nn(total_map, sample_points[j, :, :,:], self.cfg, None)
-            d_r, mask_ray = raw_2_output_speed(sample_points[j, :, :,:], rays_d[j, :, :], query_result.detach(), self.cfg, self.f_net, self.density_net, self.radiance_net, feature_map, self.device)
+            d_r, mask_ray = raw_2_output_speed(sample_points[j, :, :,:].float(), rays_d[j, :, :], query_result.detach(), self.cfg, self.f_net, self.density_net, self.radiance_net, feature_map, self.device)
             prediction_rgb , _, _, _,prediction_depth= render(d_r, z_val[j, :, :].reshape(-1, self.cfg['uniform_sample_count']+self.cfg['near_sample_count']), rays_d[j, :, :].reshape(-1,3), self.device) 
             render_depth.append(prediction_depth[None, ...])
             render_img.append(prediction_rgb[None, ...])
