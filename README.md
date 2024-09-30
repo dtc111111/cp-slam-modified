@@ -6,7 +6,6 @@
 </p>
 <p align="center">
   <h1 align="center">CP-SLAM: Collaborative Neural Point-based SLAM System[NeurIPS'23] (Modified)</h1>
-  <h3 align="center"><a href="https://zju3dv.github.io/cp-slam/">🌐Project page</a> | <a href="https://arxiv.org/abs/2311.08013">📝Paper</a> | <a href="https://www.youtube.com/watch?v=Vbubr-3LH_A">📽️Video</a></h3>
   <div align="center"></div>
 </p>
 
