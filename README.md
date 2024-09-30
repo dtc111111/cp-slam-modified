@@ -1,30 +1,17 @@
-<!--   CP-SLAM   -->
+<!--   CP-SLAM-Modified   -->
 <p align="center">
   <a href="">
     <img src="https://raw.githubusercontent.com/hjr37/open_access_assets/main/cp-slam/images/logo-1.jpg" alt="Logo" width="75%">
   </a>
 </p>
 <p align="center">
-  <h1 align="center">CP-SLAM: Collaborative Neural Point-based SLAM System[NeurIPS'23]</h1>
-  <p align="center">
-    <a href="https://github.com/hjr37/"><strong>Jiarui Hu</strong><sup>1</sup></a>
-    ·
-    <a><strong>MaoMao</strong><sup>1</sup></a>
-    <a href="http://www.cad.zju.edu.cn/home/bao/"><strong>Hujun Bao</strong><sup>1</sup></a>
-    ·
-    <a href="http://www.cad.zju.edu.cn/home/gfzhang/"><strong>Guofeng Zhang</strong><sup>1</sup></a>
-    ·
-    <a href="https://zhpcui.github.io/"><strong>Zhaopeng Cui</strong><sup>1*</sup></a>
-    <br>
-    <sup>1 </sup>State Key Lab of CAD&CG, Zhejiang University<br>
-    <sup>* </sup>Corresponding author.<br>
-  </p>
+  <h1 align="center">CP-SLAM: Collaborative Neural Point-based SLAM System[NeurIPS'23] (Modified)</h1>
   <h3 align="center"><a href="https://zju3dv.github.io/cp-slam/">🌐Project page</a> | <a href="https://arxiv.org/abs/2311.08013">📝Paper</a> | <a href="https://www.youtube.com/watch?v=Vbubr-3LH_A">📽️Video</a></h3>
   <div align="center"></div>
 </p>
 
 <p align="left">
-  <p style="text-align: justify;">This is the official implementation of <strong>CP-SLAM: Collaborative Neural Point-based SLAM System</strong>. CP-SLAM system demonstrates remarkable capabilities in multi-agent deployment and achieves state-of-the-art performance in tracking, map construction, and rendering.</p>
+  <p style="text-align: justify;">This is the official implementation of CP-SLAM: Collaborative Neural Point-based SLAM System. The original CP-SLAM code contained certain issues that hindered its proper functionality. We have addressed and resolved these issues to ensure correct operation.<strong> Additionally, we provided further details on the execution steps and added code for the evaluation section. </strong> CP-SLAM system demonstrates remarkable capabilities in multi-agent deployment and achieves state-of-the-art performance in tracking, map construction, and rendering.</p>
   <a href="">
     <img src="https://raw.githubusercontent.com/hjr37/open_access_assets/main/cp-slam/images/pipeline.jpg" alt="CP-SLAM pipeline" width="100%">
   </a>
@@ -62,14 +49,6 @@
     </li>
   </ol>
 </details>
-
-
-# News
-
-- [x] 2024.04.11 --- We have updated the `README.md` and are preparing to open-source our code！  
-- [x] 2024.04.26 --- Code for some functional modules, including `loop detection`, `pose graph`, `federated center`, and `shared data structure` (detailed comments will come soon).
-- [x] 2024.05.08 --- Code for main parts, including `optimizer`, `renderer`, `fusion center`, and `tracking and mapping modules`.
-- [ ] Installation setup
 
 # Dataset Download Link
 <p style="text-align: justify;">
