@@ -32,6 +32,8 @@ def align(model, data):
     trans = data.mean(1) - rot * model.mean(1)
 
     model_aligned = rot * model + trans
+    np.savetxt('rot_tmp.txt', rot)
+    np.savetxt('trans_tmp.txt',trans)
     alignment_error = model_aligned - data
 
     trans_error = np.sqrt(np.sum(np.multiply(
@@ -57,30 +59,24 @@ def calc_eval(gt, pred):
 
 
 
-config_1 = 'configs/multi_config/room0_0.yaml'
-config_2 = 'configs/multi_config/room0_1.yaml'
 output_path = 'output_room0'
-configs = [config_1, config_2]
+gt_pose_all = np.loadtxt('eval_room0/traj.txt').reshape(-1, 4, 4)
+print(gt_pose_all.shape)
+
+segs = [(0,1100),(900,2000)]
 gt_poses = []
-for config in configs:
-    with open(config, 'r') as f:
-        cfg = yaml.safe_load(f)
-    
-    print(cfg['pose_path'])
-    with open(cfg['pose_path']) as f:
-        poses=f.readlines()
-    
-    poses_mat = np.array([np.array(list(map(float, line.split()))).reshape(4, 4) for line in poses])
+for seg in segs:
+    poses_mat = gt_pose_all[seg[0]:seg[1]]
+    # print(poses_mat.shape)
     # print(poses_mat.shape)
     gt_poses.append(poses_mat)
 
-# gt_poses = np.concatenate(gt_poses,axis=0)
-# print(gt_poses.shape)
+# exit(0)
+gt_poses = np.concatenate(gt_poses,axis=0)
+print(gt_poses.shape)
 
 out_trajs_1 = torch.load(output_path + '/pgo_traj_1.pt', map_location='cpu').numpy()
 out_trajs_2 = torch.load(output_path + '/pgo_traj_2.pt', map_location='cpu').numpy()
-
-gt_poses = np.concatenate(gt_poses, axis=0)
 pred_poses = np.concatenate([out_trajs_1,out_trajs_2],axis=0)
 # print(gt_poses.shape)
 

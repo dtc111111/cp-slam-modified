@@ -2,6 +2,9 @@
 cp-slam/checkpoint
 cp-slam/runs
 cp-slam/output*
+cp-slam/eval*
 *.pt
 *.png
 *.ply
+*.txt
+!cp-slam/eval*.py
