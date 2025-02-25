@@ -443,10 +443,10 @@ def keyframe_selection_overlap(H, W, K, mask_scale, frame, c2w, keyframe_list , 
     z_vals = near * (1.-t_vals) + far * (t_vals)
     pts = rays_o[..., None, :] + rays_d[..., None, :] * \
         z_vals[..., :, None]  # [N_rays, N_samples, 3]
-    vertices = pts.reshape(-1, 3).cpu().numpy()
+    vertices = pts.reshape(-1, 3).detach().cpu().numpy()
     list_keyframe = []
     for keyframe in keyframe_list:
-        c2w = keyframe.pose.cpu().numpy()
+        c2w = keyframe.pose.detach().cpu().numpy()
         w2c = np.linalg.inv(c2w)
         ones = np.ones_like(vertices[:, 0]).reshape(-1, 1)
         homo_vertices = np.concatenate(
