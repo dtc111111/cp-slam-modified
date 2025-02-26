@@ -5,7 +5,7 @@
   </a>
 </p>
 <p align="center">
-  <h1 align="center">CP-SLAM: Collaborative Neural Point-based SLAM System[NeurIPS'23] (Modified)</h1>
+  <h1 align="center">CP-SLAM: Collaborative Neural Point-based SLAM System[NeurIPS'24] (Modified)</h1>
   <div align="center"></div>
 </p>
 
