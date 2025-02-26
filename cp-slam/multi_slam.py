@@ -12,6 +12,11 @@ import torch
 from src.fusion import Fusion
 from src.FedAVG import FedAVG
 from ctypes import c_bool
+import argparse
+import logging
+LOG_FORMAT = "%(asctime)s - %(levelname)s %(name)s %(filename)s [line:%(lineno)d] - %(message)s"
+logging.basicConfig(filename='multi_slam.log',format=LOG_FORMAT,level=logging.DEBUG)
+
 
 class Explorer_single():
     '''
@@ -62,25 +67,36 @@ class Explorer_single():
         p_fusion.join()
         p_fed.join()
 
-if __name__ == '__main__':
-    assert os.path.exists('configs/replica.yaml'), 'Cannot find config files!!!'
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default='configs/replica.yaml', help="overall config")
+    parser.add_argument("--config_multi_0", default='configs/multi_config/room0_0.yaml', help="multi config 0")
+    parser.add_argument("--config_multi_1", default='configs/multi_config/room0_1.yaml', help="multi config 1")
+    args = parser.parse_args()
+    return args
 
-    with open('configs/replica.yaml', 'r') as f:
+
+if __name__ == '__main__':
+    args = parse_args()
+    
+    assert os.path.exists(args.config), 'Cannot find config files!!!'
+
+    with open(args.config, 'r') as f:
         configer = yaml.safe_load(f)
         print('\033[1;32m Load configer successfully \033[0m')
 
-    with open('configs/multi_config/room0_0.yaml', 'r') as f:
+    with open(args.config_multi_0, 'r') as f:
         configer_0 = yaml.safe_load(f)
         print('\033[1;32m Load configer successfully \033[0m')
 
-    with open('configs/multi_config/room0_1.yaml', 'r') as f:
+    with open(args.config_multi_1, 'r') as f:
         configer_1 = yaml.safe_load(f)
         print('\033[1;32m Load configer successfully \033[0m')
  
 
     conf = {
-    'checkpoint_path': './checkpoint/TokyoTM_struct.mat',
-    'whiten': True
+        'checkpoint_path': './checkpoint/TokyoTM_struct.mat',
+        'whiten': True
     }
     torch.multiprocessing.set_start_method('spawn')
     explorer_single = Explorer_single(configer, configer_0, configer_1, conf)
