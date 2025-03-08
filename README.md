@@ -5,12 +5,12 @@
   </a>
 </p>
 <p align="center">
-  <h1 align="center">CP-SLAM: Collaborative Neural Point-based SLAM System[NeurIPS'24] (Modified)</h1>
+  <h1 align="center">CP-SLAM: Collaborative Neural Point-based SLAM System[NeurIPS'24] (Unofficial Modified)</h1>
   <div align="center"></div>
 </p>
 
 <p align="left">
-  <p style="text-align: justify;">This is the official implementation of CP-SLAM: Collaborative Neural Point-based SLAM System. The original CP-SLAM code contained certain issues that hindered its proper functionality. We have addressed and resolved these issues to ensure correct operation.<strong> Additionally, we provided further details on the execution steps and added code for the evaluation section. </strong> CP-SLAM system demonstrates remarkable capabilities in multi-agent deployment and achieves state-of-the-art performance in tracking, map construction, and rendering.</p>
+  <p style="text-align: justify;">This is the unofficial implementation of CP-SLAM: Collaborative Neural Point-based SLAM System. The original CP-SLAM code contained certain issues that hindered its proper functionality. We have addressed and resolved these issues to ensure correct operation.<strong> Additionally, we provided further details on the execution steps and added code for the evaluation section. </strong> CP-SLAM system demonstrates remarkable capabilities in multi-agent deployment and achieves state-of-the-art performance in tracking, map construction, and rendering.</p>
   <a href="">
     <img src="https://raw.githubusercontent.com/hjr37/open_access_assets/main/cp-slam/images/pipeline.jpg" alt="CP-SLAM pipeline" width="100%">
   </a>
