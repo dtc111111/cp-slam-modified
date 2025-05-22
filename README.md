@@ -78,9 +78,11 @@ Create the output directory and modify the corresponding configuration file in m
 python multi_slam.py --config configs/replica.yaml --config_multi_0 configs/multi_config/room0_0.yaml --config_multi_1 configs/multi_config/room0_1.yaml
 ```
 ## Evaluation
+```bash
 python re_render.py 
 python eval.py
 python eval_recon.py
+```
 # Acknowledgement
 
 # Citation
