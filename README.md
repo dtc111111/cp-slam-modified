@@ -64,15 +64,23 @@ We provide the <a href="https://huggingface.co/datasets/wssy37/CP-SLAM_dataset">
 
 
 - ### Method 2 Configure the environment in one line
-
+```bash
+conda env create -f env.yaml
+conda activate cp-slam
+```
 
 
 # Usage
 
 ## Run
-
+Create the output directory and modify the corresponding configuration file in multi_config.
+```bash
+python multi_slam.py --config configs/replica.yaml --config_multi_0 configs/multi_config/room0_0.yaml --config_multi_1 configs/multi_config/room0_1.yaml
+```
 ## Evaluation
-
+python re_render.py 
+python eval.py
+python eval_recon.py
 # Acknowledgement
 
 # Citation
