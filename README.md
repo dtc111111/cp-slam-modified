@@ -83,8 +83,6 @@ python re_render.py
 python eval.py
 python eval_recon.py
 ```
-# Acknowledgement
-
 # Citation
 ```
 @misc{hu2023cpslam,
