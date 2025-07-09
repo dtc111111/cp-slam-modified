@@ -60,10 +60,7 @@ We provide the <a href="https://huggingface.co/datasets/wssy37/CP-SLAM_dataset">
 
 # Installation
 
-- ### Method 1 step-by-step set up(Recommended)
-
-
-- ### Method 2 Configure the environment in one line
+- ###  Configure the environment in one line
 ```bash
 conda env create -f env.yaml
 conda activate cp-slam
@@ -92,5 +89,20 @@ python eval_recon.py
       eprint={2311.08013},
       archivePrefix={arXiv},
       primaryClass={cs.CV}
+}
+
+@article{deng2025mcnslammultiagentcollaborativeneural,
+      title={MCN-SLAM: Multi-Agent Collaborative Neural SLAM with Hybrid Implicit Neural Scene Representation}, 
+      author={Tianchen Deng and Guole Shen and Xun Chen and Shenghai Yuan and Hongming Shen and Guohao Peng and Zhenyu Wu and Jingchuan Wang and Lihua Xie and Danwei Wang and Hesheng Wang and Weidong Chen},
+      journal={arXiv preprint arXiv:2506.18678},
+      year={2025},
+}
+
+@inproceedings{deng2025mne,
+  title={Mne-slam: Multi-agent neural slam for mobile robots},
+  author={Deng, Tianchen and Shen, Guole and Xun, Chen and Yuan, Shenghai and Jin, Tongxin and Shen, Hongming and Wang, Yanbo and Wang, Jingchuan and Wang, Hesheng and Wang, Danwei and others},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={1485--1494},
+  year={2025}
 }
 ```
